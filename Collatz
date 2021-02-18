@@ -1,6 +1,6 @@
 #include <iostream>
 
-int n, x, steps;
+int x, steps;
 
 int main()
 {
