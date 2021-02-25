@@ -1,0 +1,70 @@
+#include <iostream>
+
+class BasicPlants
+{
+public:
+	int D = 0;
+	int G = 0; //Time (days), growth per day
+
+	void Growth(int D, int G)
+	{
+		std::cout << "Your plant is going to grow " << D*G << "mm\n";
+	}
+
+};
+
+class FruitPlants : public BasicPlants
+{
+public:
+	int B = 0;
+	int F = 0; //Branches, Fruits on one branch 
+
+	void Fruits(int B, int F)
+	{
+		std::cout << "Your plant is going to produce apx." << B * F << " fruits in one cycle\n";
+	}
+	
+	void Fu()
+	{
+		std::cout << "Monthly estimated growth (mm): ";
+		std::cin >> G;
+		std::cout << "Number of months: ";
+		std::cin >> D;
+	}
+};
+
+int main()
+{
+	std::string type;
+	FruitPlants s;
+	BasicPlants e;
+
+	std::cout << "I'm going to tell you how much your plant will grow in a given number of months\n";
+	std::cout << "If it's a fruit plant, I'm going to tell you how many fruits it's able to produce during one cycle\n";
+	std::cout << std::endl;
+	std::cout << "Shall we talk about normal plants or those which have fruits? (basic/fruits): ";
+	std::cin >> type;
+
+	if (type == "fruits")
+	{
+		s.Fu();
+
+		std::cout << "How many branches does your plant have: ";
+		std::cin >> s.B;
+		std::cout << "How many fruits there is usually on a branch: ";
+		std::cin >> s.F;
+		std::cout << std::endl;
+
+		s.Growth(s.D, s.G);
+		s.Fruits(s.B, s.F);
+	}
+	else if (type == "basic")
+	{
+		s.Fu();
+		e.Growth(s.D, s.G);
+	}
+	else
+	{
+		std::cout << "Error";
+	}
+}
