@@ -4,6 +4,7 @@ int main()
 {
 	int num;
 	int n;
+	
 	std::cout << "What is the number of students: ";
 	std::cin >> num;
 
