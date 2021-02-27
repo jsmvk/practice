@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main()
+{
+	int num;
+	int n;
+	std::cout << "What is the number of students: ";
+	std::cin >> num;
+
+	float* GPA;
+	GPA = new float[num];
+
+	for (int n = 1; n <= num; ++n)
+	{
+		std::cout << "Student no " << n << " (GPA): ";
+		std::cin >> *(GPA + n);
+	}
+
+	std::cout << std::endl;
+
+	for (int i = 1; i <= num; ++i)
+	{
+		std::cout << "Student no " << i << " (GPA): " << *(GPA + i) << "\n";
+	}
+}
