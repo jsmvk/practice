@@ -12,7 +12,6 @@ int main()
 	CIN(x);
 	LOG("Collatz operations: ");
 	LOG(collatz(x));
-
 }
 
 int collatz(int x)
