@@ -1,4 +1,6 @@
 #include <iostream>
+#define LOG(x) std::cout << x;
+#define CIN(x) std::cin >> x;
 
 int x, steps;
 
@@ -6,10 +8,10 @@ int main()
 {
 	int collatz(int x);
 	
-	std::cout << "Number to perform collatz: ";
-	std::cin >> x;
-	
-	std::cout << "Collatz operations: " << collatz(x);
+	LOG("Number to perform collatz: ");
+	CIN(x);
+	LOG("Collatz operations: ");
+	LOG(collatz(x));
 
 }
 
@@ -20,12 +22,12 @@ int collatz(int x)
 		if (x % 2 == 0)
 		{
 			x = x / 2;
-			steps++;
+			++steps;
 		}
 		else
 		{
 			x = x * 3 + 1;
-			steps++;
+			++steps;
 		}
 	}
 	return steps;
