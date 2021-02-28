@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define LOG(x) std::cout << x;
+#define LOG(x) std::cout << x << std::endl;
 
 int main()
 {
@@ -8,20 +8,19 @@ int main()
 	{
 		if (i % 3 == 0 && i % 5 == 0)
 		{
-			LOG("FizzBuzz\n");
+			LOG("FizzBuzz");
 		}
 		else if (i % 3 == 0)
 		{
-			LOG("Fizz\n");
+			LOG("Fizz");
 		}
 		else if (i % 5 == 0)
 		{
-			LOG("Buzz\n");
+			LOG("Buzz");
 		}
 		else 
 		{
 			LOG(i);
-			LOG("\n");
 		}
 
 	}
