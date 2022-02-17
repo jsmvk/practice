@@ -1,0 +1,30 @@
+select FirstName, EmailAddress, CompanyName
+from Customer
+where CompanyName = 'Bike World'
+
+select CompanyName, City
+from Customer a
+left join CustomerAddress b
+on a.CustomerID = b.CustomerID
+left join Address c
+on c.AddressID = b.AddressID
+where City = 'Dallas'
+
+select COUNT(OrderQty) as 'no of items'
+from SalesOrderDetail a
+left join Product b 
+on a.ProductID = b.ProductID
+where ListPrice > 1000
+
+select CompanyName
+from Customer a 
+left join SalesOrderHeader b on a.CustomerID = b.CustomerID
+where SubTotal + TaxAmt + Freight > 100000
+
+select SUM(a.OrderQty) AS 'Riding Cycles Orders'
+from SalesOrderDetail a
+left join Product b on a.ProductID  = b.ProductID
+left join SalesOrderHeader c on a.SalesOrderID = c.SalesOrderID
+left join Customer d on d.CustomerID = c.CustomerID
+where Name = 'Racing Socks, L' 
+and CompanyName = 'Riding Cycles'
