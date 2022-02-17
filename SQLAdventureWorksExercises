@@ -33,21 +33,6 @@ select SalesOrderID, UnitPrice
 from SalesOrderDetail
 where OrderQty = 1
 
-select count(*) as 'sold to London'
-from SalesOrderDetail a
-left join SalesOrderHeader b on a.SalesOrderID = b.SalesOrderID
-left join Address c on b.ShipToAddressID = c.AddressID
-left join Product d on a.ProductID = d.ProductID
-left join ProductCategory e on d.ProductCategoryID = e.ProductCategoryID
-where City = 'London' 
-and e.Name = 'Cranksets'
-select CompanyName, SubTotal, Weight
-from Customer a
-left join SalesOrderHeader b on a.CustomerID = b.CustomerID
-left join SalesOrderDetail c on b.SalesOrderID = c.SalesOrderID
-left join Product d on c.ProductID = d.ProductID
-order by SubTotal desc
-
 select a.Name, CompanyName
 from ProductModel a
 left join Product b on a.ProductModelID = b.ProductModelID
@@ -62,3 +47,19 @@ left join ProductModelProductDescription b on a.ProductDescriptionID = b.Product
 left join Product c on b.ProductModelID = c.ProductModelID
 where Culture = 'fr'
 and ProductID = 736
+
+select CompanyName, SubTotal, Weight
+from Customer a
+left join SalesOrderHeader b on a.CustomerID = b.CustomerID
+left join SalesOrderDetail c on b.SalesOrderID = c.SalesOrderID
+left join Product d on c.ProductID = d.ProductID
+order by SubTotal desc
+
+select count(*) as 'sold to London'
+from SalesOrderDetail a
+left join SalesOrderHeader b on a.SalesOrderID = b.SalesOrderID
+left join Address c on b.ShipToAddressID = c.AddressID
+left join Product d on a.ProductID = d.ProductID
+left join ProductCategory e on d.ProductCategoryID = e.ProductCategoryID
+where City = 'London' 
+and e.Name = 'Cranksets'
