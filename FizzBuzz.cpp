@@ -1,20 +1,18 @@
 #include <iostream>
 
-#define LOG(x) std::cout << x << std::endl;
-
 int main(){
 	for (int i = 1; i < 101; i++){
 		if (i % 3 == 0 && i % 5 == 0){
-			LOG("FizzBuzz");
+			std::cout << "FizzBuzz" << std::endl;
 		}
 		else if (i % 3 == 0){
-			LOG("Fizz");
+			std::cout << "Fizz" << std::endl;
 		}
 		else if (i % 5 == 0){
-			LOG("Buzz");
+			std::cout << "Buzz" << std::endl;
 		}
-		else{
-			LOG(i);
+		else {
+			std::cout << i << std::endl;
 		}
 
 	}
