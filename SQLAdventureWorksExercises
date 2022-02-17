@@ -40,3 +40,10 @@ left join SalesOrderDetail c on b.ProductID = c.ProductID
 left join SalesOrderHeader d on c.SalesOrderID = d.SalesOrderID
 left join Customer e on d.CustomerID = e.CustomerID
 where a.Name = 'Racing Socks'
+
+select Description 
+from ProductDescription a
+left join ProductModelProductDescription b on a.ProductDescriptionID = b.ProductDescriptionID
+left join Product c on b.ProductModelID = c.ProductModelID
+where Culture = 'fr'
+and ProductID = 736
