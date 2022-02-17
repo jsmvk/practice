@@ -33,6 +33,13 @@ select SalesOrderID, UnitPrice
 from SalesOrderDetail
 where OrderQty = 1
 
+select CompanyName, SubTotal, Weight
+from Customer a
+left join SalesOrderHeader b on a.CustomerID = b.CustomerID
+left join SalesOrderDetail c on b.SalesOrderID = c.SalesOrderID
+left join Product d on c.ProductID = d.ProductID
+order by SubTotal desc
+
 select a.Name, CompanyName
 from ProductModel a
 left join Product b on a.ProductModelID = b.ProductModelID
