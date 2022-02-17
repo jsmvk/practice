@@ -1,5 +1,3 @@
-```SQL
-
 SELECT FirstName, EmailAddress, CompanyName
 FROM Customer
 WHERE CompanyName = 'Bike World'
