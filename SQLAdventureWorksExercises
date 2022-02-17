@@ -55,7 +55,7 @@ left join SalesOrderDetail c on b.SalesOrderID = c.SalesOrderID
 left join Product d on c.ProductID = d.ProductID
 order by SubTotal desc
 
-select count(*) as 'sold to London'
+select sum(*) as 'sold to London'
 from SalesOrderDetail a
 left join SalesOrderHeader b on a.SalesOrderID = b.SalesOrderID
 left join Address c on b.ShipToAddressID = c.AddressID
