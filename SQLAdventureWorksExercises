@@ -32,3 +32,11 @@ and CompanyName = 'Riding Cycles'
 select SalesOrderID, UnitPrice
 from SalesOrderDetail
 where OrderQty = 1
+
+select a.Name, CompanyName
+from ProductModel a
+left join Product b on a.ProductModelID = b.ProductModelID
+left join SalesOrderDetail c on b.ProductID = c.ProductID
+left join SalesOrderHeader d on c.SalesOrderID = d.SalesOrderID
+left join Customer e on d.CustomerID = e.CustomerID
+where a.Name = 'Racing Socks'
