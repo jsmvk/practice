@@ -28,3 +28,7 @@ left join SalesOrderHeader c on a.SalesOrderID = c.SalesOrderID
 left join Customer d on d.CustomerID = c.CustomerID
 where Name = 'Racing Socks, L' 
 and CompanyName = 'Riding Cycles'
+
+select SalesOrderID, UnitPrice
+from SalesOrderDetail
+where OrderQty = 1
