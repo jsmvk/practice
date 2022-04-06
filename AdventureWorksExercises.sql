@@ -1,6 +1,6 @@
-SELECT FirstName, EmailAddress, CompanyName
-FROM Customer
-WHERE CompanyName = 'Bike World'
+select FirstName, EmailAddress, CompanyName
+from Customer
+where CompanyName = 'Bike World'
 
 select CompanyName, City
 from Customer a
