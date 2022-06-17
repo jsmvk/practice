@@ -180,3 +180,20 @@ on b.SalesOrderID = c.SalesOrderID
 left join SalesLT.Customer d
 on c.CustomerID = d.CustomerID
 where CompanyName = 'Futuristic Bikes'
+
+--18
+
+select AddressLine1, City, StateProvince, PostalCode, CompanyName
+from (
+select distinct CompanyName, CustomerID, 1 as 'rank'
+from SalesLT.Customer 
+where lower(CompanyName) like '%bike%'
+union
+select distinct CompanyName, CustomerID, 2 as 'rank'
+from SalesLT.Customer 
+where lower(CompanyName) like '%cycle%') z
+left join SalesLT.CustomerAddress x
+on z.CustomerID = x.CustomerID
+left join SalesLT.[Address] y
+on x.AddressID = y.AddressID
+order by z.rank, CompanyName
