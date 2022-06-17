@@ -1,3 +1,5 @@
+# AdventureWorks.sql SQL exercises link - https://sqlzoo.net/wiki/AdventureWorks
+
 --1
 
 select FirstName, EmailAddress, CompanyName
