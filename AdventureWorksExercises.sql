@@ -197,3 +197,14 @@ on z.CustomerID = x.CustomerID
 left join SalesLT.[Address] y
 on x.AddressID = y.AddressID
 order by z.rank, CompanyName
+
+--19
+
+--total_value, country region
+
+select a.CountryRegion, sum(SubTotal) as 'Total Order Value'
+from SalesLT.[Address] a
+left join SalesLT.SalesOrderHeader b
+on a.AddressID = b.ShipToAddressID
+group by a.CountryRegion
+order by sum(SubTotal) desc
