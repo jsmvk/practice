@@ -33,7 +33,7 @@ where SubTotal + TaxAmt + Freight > 100000
 
 --5
 
-select SUM(a.OrderQty) AS 'Riding Cycles Orders'
+select SUM(a.OrderQty) as 'Riding Cycles Orders'
 from SalesOrderDetail a
 left join Product b on a.ProductID  = b.ProductID
 left join SalesOrderHeader c on a.SalesOrderID = c.SalesOrderID
@@ -89,8 +89,8 @@ and e.Name = 'Cranksets'
 --11
 
 select a.CompanyName,
-max(case when AddressType = 'Main Office' then AddressLine1 else '' end) AS 'Main Office',
-max(case when AddressType = 'Shipping' then AddressLine1 else '' end) AS 'Shipping Address'
+max(case when AddressType = 'Main Office' then AddressLine1 else '' end) as 'Main Office',
+max(case when AddressType = 'Shipping' then AddressLine1 else '' end) as 'Shipping Address'
 from SalesLT.Customer a
 join SalesLT.CustomerAddress b
 on a.CustomerID = b.CustomerID
@@ -102,8 +102,8 @@ group by a.CompanyName
 --12
 
 select a.SalesOrderID, a.SubTotal,
-sum(OrderQty*UnitPrice) AS 'SubTotal',
-sum(OrderQty*ListPrice) AS 'SubTotal'
+sum(OrderQty*UnitPrice) as 'SubTotal',
+sum(OrderQty*ListPrice) as 'SubTotal'
 from SalesLT.SalesOrderHeader a
 left join SalesLT.SalesOrderDetail b
 on a.SalesOrderID = b.SalesOrderID
@@ -113,7 +113,7 @@ group by SubTotal, a.SalesOrderID
 
 --13
 
-select top 1 Sum(OrderQty * UnitPrice) AS Value, a.[Name]
+select top 1 Sum(OrderQty * UnitPrice) as Value, a.[Name]
 from SalesLT.Product a
 left join SalesLT.SalesOrderDetail b
 on a.ProductID = b.ProductID
@@ -159,3 +159,5 @@ on d.ShipToAddressID = e.AddressID
 where e.City is not null
 group by e.City, a.[name]
 order by sum(OrderQty * UnitPrice) desc
+
+--16
