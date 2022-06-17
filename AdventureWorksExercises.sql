@@ -121,3 +121,23 @@ group by a.[Name]
 order by Value desc
 
 --14
+
+select
+z.range as 'range',
+count(z.total) as 'Num of Orders',
+sum(z.total) as 'Value'
+from (
+select 
+case
+when SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty between 0 and 99 
+then '0 - 99'
+when SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty between 100 and 999 
+then '100 - 999' 
+when SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty between 1000 and 9999 
+then '1000 - 9999' 
+when SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty >= 10000 
+then '>= 10000'
+end as 'range',
+SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty as 'Total'
+from SalesLT.SalesOrderDetail) as z
+group by range
