@@ -168,3 +168,15 @@ left join SalesLT.Customer b
 on a.CustomerID = b.CustomerID
 where CompanyName like 'Good Toys'
 or CompanyName like 'Bike World'
+
+--17
+
+select CompanyName, OrderQty, [name] as 'Product Name'
+from SalesLT.Product a
+left join SalesLT.SalesOrderDetail b
+on a.ProductID = b.ProductID
+left join SalesLT.SalesOrderHeader c
+on b.SalesOrderID = c.SalesOrderID 
+left join SalesLT.Customer d
+on c.CustomerID = d.CustomerID
+where CompanyName = 'Futuristic Bikes'
