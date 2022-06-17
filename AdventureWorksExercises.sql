@@ -141,3 +141,21 @@ end as 'range',
 SalesOrderDetail.UnitPrice * SalesOrderDetail.OrderQty as 'Total'
 from SalesLT.SalesOrderDetail) as z
 group by range
+
+--15
+
+--city, product category, total_value, top 3 needed
+
+select top 3 e.City, a.[Name], sum(OrderQty * UnitPrice) as 'Total value'
+from SalesLT.ProductCategory as a
+left join SalesLT.Product as b
+on a.ProductCategoryID = b.ProductCategoryID
+left join SalesLT.SalesOrderDetail as c
+on b.ProductID = c.ProductID
+left join SalesLT.SalesOrderHeader as d
+on c.SalesOrderID = d.SalesOrderID
+left join SalesLT.[Address] as e
+on d.ShipToAddressID = e.AddressID
+where e.City is not null
+group by e.City, a.[name]
+order by sum(OrderQty * UnitPrice) desc
