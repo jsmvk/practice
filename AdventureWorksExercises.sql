@@ -208,3 +208,21 @@ left join SalesLT.SalesOrderHeader b
 on a.AddressID = b.ShipToAddressID
 group by a.CountryRegion
 order by sum(SubTotal) desc
+
+--20
+
+--top customer for region
+
+select top 1 with ties CompanyName, CountryRegion, SubTotal
+from SalesLT.Customer a
+left join SalesLT.CustomerAddress b
+on a.CustomerID = b.CustomerID
+left join SalesLT.[Address] c
+on b.AddressID = c.AddressID
+left join SalesLT.SalesOrderHeader d
+on c.AddressID = d.ShipToAddressID
+left join SalesLT.SalesOrderDetail e
+on d.SalesOrderID = e.SalesOrderID
+where SubTotal is not null
+group by CompanyName, CountryRegion, SubTotal
+order by row_number() over(partition by CountryRegion order by SubTotal desc)
