@@ -161,3 +161,10 @@ group by e.City, a.[name]
 order by sum(OrderQty * UnitPrice) desc
 
 --16
+
+select CompanyName, SalesOrderNumber
+from SalesLT.SalesOrderHeader a
+left join SalesLT.Customer b
+on a.CustomerID = b.CustomerID
+where CompanyName like 'Good Toys'
+or CompanyName like 'Bike World'
